@@ -1,0 +1,3 @@
+Beautifulsoup
+pandas
+requests
