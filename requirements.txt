@@ -1,0 +1,13 @@
+BeautifulSoup4
+requests
+pandas
+psycopg2-binary
+sqlalchemy
+multipledispatch
+fastapi
+uvicorn
+openpyxl
+python-multipart
+jinja2
+openpyxl
+pydantic
