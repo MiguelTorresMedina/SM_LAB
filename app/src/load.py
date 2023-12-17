@@ -13,7 +13,7 @@ from time import perf_counter
 from multipledispatch import dispatch
 
 # Variables
-DATA_PATH = os.getcwd()+"/data/"
+DATA_PATH = os.getcwd()+"/data/SILVER_DATA"
 PRODUCTS_DICT = DATA_PATH + 'product_rename_clean.csv'
 FINAL_TABLE_NAME = "dataset_final"
 

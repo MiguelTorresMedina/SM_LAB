@@ -21,7 +21,7 @@ logging.basicConfig(
 
 ROOT_PATH = os.getcwd()
 DATA_PATH = "data/"
-RAW_DATASETS_PATH = DATA_PATH + "raw_data/"
+RAW_DATASETS_PATH = DATA_PATH + "RAW_DATA/"
 
 def timer(input_funcion):
     '''
