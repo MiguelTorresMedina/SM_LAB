@@ -14,6 +14,7 @@ COPY . .
 # Expone el puerto 80
 EXPOSE 80
 
+USER root
 # Comando para ejecutar la aplicación
 #CMD ["uvicorn", "--app-dir", "src", "main:app", "--reload", "--host", "0.0.0.0", "--port", "80"]
 CMD ["uvicorn", "app.src.main:app", "--reload", "--host", "0.0.0.0", "--port", "80"]

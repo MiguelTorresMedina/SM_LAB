@@ -18,7 +18,7 @@ async def startup_event():
     datasets_to_load = ['dataset_1', 'dataset_3a', 'dataset_3b', 'dataset_4', 'dataset_5']
     for dataset in datasets_to_load:
         print(f"Cargando {dataset} en la base de datos...")
-        load.to_db(dataset)
+        extraction.to_db(dataset)
 
     # Limpieza de los datasets 1, 3a, 3b, 4 y 5
     for dataset in datasets_to_load:
