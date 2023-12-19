@@ -11,7 +11,7 @@ from bs4 import BeautifulSoup
 import psycopg2
 from psycopg2 import extras
 from multipledispatch import dispatch
-from config import config
+from app.src.config import config
 
 
 logging.basicConfig(
@@ -22,6 +22,7 @@ logging.basicConfig(
 ROOT_PATH = os.getcwd()
 DATA_PATH = "data/"
 RAW_DATASETS_PATH = DATA_PATH + "RAW_DATA/"
+DATA_PATH2 = "/app/data/RAW_DATA/"
 
 def timer(input_funcion):
     '''
@@ -80,7 +81,8 @@ def data_set_1_extract():
         'https://www.mapa.gob.es/es/alimentacion/temas/consumo-tendencias/panel-de-consumo-alimentario/series-anuales/',
         timeout=20
     )
-    data_set_1_path = "/" + RAW_DATASETS_PATH + 'dataset_1/'
+    #data_set_1_path = "/" + RAW_DATASETS_PATH + 'dataset_1/'
+    data_set_1_path = DATA_PATH2 + "dataset_1/"
     year_from = 18
     year_to = 20
     regex_ccaa = re.compile(' CCAA ??')
@@ -131,6 +133,7 @@ def data_set_4_extract():
     dataset = 'https://ec.europa.eu/eurostat/api/comext/dissemination/sdmx/2.1/data/data_set-045409/M.DE+BE+FI+PT+BG+DK+LT+LU+HR+LV+FR+HU+SE+SI+SK+EU27_2020+IE+EE+MT+GR+IT+ES+AT+CY+CZ+PL+RO+NL.ES.070890+07049010+070810+070820+08062010+080410+080430+080440+080450+08062090+08062030+070970+070910+070920+070930+070940+070410+070420+070320+070610+070511+070519+070521+070529+08059000+080929+080522+08052190+08052110+080720+08093090+08081080+08093010+08103010+08103030+08091000+08054000+08042010+08030011+08030019+07031019+07031090+07096010+07096099+08071010+08071090+08083090+07070090+08105000+07070005+08134030+08134050+07099310+08134010+07099050+07099060+07099031+07099039+07099040+08061010+08061090+081060+081070+081010+081310+081320+081330+0702+08051028+08051024+08051022+07019010+07019050+07019090+08055010+08092005+08055090+08102010+08102090+07095950+07095990+08082090+08094005+07095150+07095130+08094090+07095100.1+2.QUANTITY_IN_100KG+VALUE_IN_EUROS/?format=SDMX-CSV&compressed=true&returnData=ALL&startPeriod=2018-01&endPeriod=2020-12&lang=en&label=label_only'
     file_title = 'dataset_4.csv'
     data_set_4_path = "/" + RAW_DATASETS_PATH + 'dataset_4/'
+    
 
     # Response body
     response = build_response([file_title], data_set_4_path)

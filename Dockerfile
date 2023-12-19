@@ -2,7 +2,7 @@
 FROM python:3.11
 
 # Establece el directorio de trabajo en el contenedor
-WORKDIR /app
+WORKDIR /app/
 
 # Copia el archivo de requisitos e instala las dependencias
 COPY ./requirements.txt .
@@ -15,4 +15,5 @@ COPY . .
 EXPOSE 80
 
 # Comando para ejecutar la aplicación
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80"]
+#CMD ["uvicorn", "--app-dir", "src", "main:app", "--reload", "--host", "0.0.0.0", "--port", "80"]
+CMD ["uvicorn", "app.src.main:app", "--reload", "--host", "0.0.0.0", "--port", "80"]

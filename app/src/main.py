@@ -1,7 +1,8 @@
 from fastapi import FastAPI, HTTPException
-from extraction import extract_data_set, to_db
-from load import clean_dataset, generate_dataset_final
-from serve import query_db  # Importando la función de serve.py para ejecutar consultas
+
+import app.src.load as load
+import app.src.extraction as extraction
+import app.src.serve as serve # Importando la función de serve.py para ejecutar consultas
 
 app = FastAPI()
 
@@ -11,22 +12,22 @@ async def startup_event():
     datasets_to_extract = ['dataset_1', 'dataset_4', 'dataset_5']
     for dataset in datasets_to_extract:
         print(f"Extrayendo {dataset}...")
-        extract_data_set(dataset)
+        extraction.extract_data_set(dataset)
 
     # Carga de los datasets 1, 3a, 3b, 4 y 5 en la base de datos
     datasets_to_load = ['dataset_1', 'dataset_3a', 'dataset_3b', 'dataset_4', 'dataset_5']
     for dataset in datasets_to_load:
         print(f"Cargando {dataset} en la base de datos...")
-        to_db(dataset)
+        load.to_db(dataset)
 
     # Limpieza de los datasets 1, 3a, 3b, 4 y 5
     for dataset in datasets_to_load:
         print(f"Limpiando {dataset}...")
-        clean_dataset(dataset)
+        load.clean_dataset(dataset)
 
     # Generar el dataset final tras la limpieza
     print("Generando el dataset final...")
-    generate_dataset_final()
+    load.generate_dataset_final()
 
 @app.get("/dataset_final/filter")
 async def filter_dataset(column: str, value: str):
@@ -36,8 +37,7 @@ async def filter_dataset(column: str, value: str):
     #if column not in allowed_columns:
     #    raise HTTPException(status_code=400, detail="Filtro no permitido")
 
-    query = f"SELECT * FROM dataset_final WHERE {column} = :value"
-    data = query_db(query, {'value': value})
+    data = serve.get_filtered_data(column, value)
     return data.to_dict(orient='records')
 
 @app.get("/")

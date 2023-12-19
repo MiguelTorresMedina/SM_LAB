@@ -8,12 +8,13 @@ import psycopg2.extras as extras
 import grequests
 import requests
 from sqlalchemy import create_engine
-from config import config
+from app.src.config import config
 from time import perf_counter
 from multipledispatch import dispatch
 
 # Variables
 DATA_PATH = os.getcwd()+"/data/SILVER_DATA"
+DATA_PATH2 = os.getcwd()+"/data/GOLD_DATA"
 PRODUCTS_DICT = DATA_PATH + 'product_rename_clean.csv'
 FINAL_TABLE_NAME = "dataset_final"
 
@@ -63,6 +64,11 @@ def generate_dataset_final():
 
     # Export merged dataset to DB
     manage_insert_to_db(FINAL_TABLE_NAME, df)
+
+    # Guarda el dataset fusionado como archivo CSV
+    file_path = os.path.join(DATA_PATH2, "dataset_final.csv")
+    os.makedirs(DATA_PATH2, exist_ok=True)  # Crea el directorio si no existe
+    df.to_csv(file_path, index=False)
 
     response['success'] = True
     return response

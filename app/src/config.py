@@ -3,11 +3,11 @@ import os
 
 def config(section='postgresql'):
     db = {
-        "host": os.getenv("DB_HOST"),
+        "host": os.getenv("DB_HOST ", "db"),
         "port": os.getenv("DB_PORT", "5432"),
         "database": os.getenv("DB_NAME", "postgres"),
         "user": os.getenv("DB_USER", "postgres"),
-        "password": os.getenv("DB_PASSWORD")
+        "password": os.getenv("DB_PASSWORD", "cont482ssmm")
     }
 
     if not all(db.values()):
