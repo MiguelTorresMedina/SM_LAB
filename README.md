@@ -1,6 +1,6 @@
 # SM_LAB
 
-Proyecto de laboratorio para la asignatura sistemas multiagente
+Proyecto de laboratorio para la asignatura sistemas multiagentes
 
 Daniel López Martínez
 Miguel Torres Medina
