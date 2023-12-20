@@ -8,7 +8,4 @@ fastapi
 uvicorn
 openpyxl
 python-multipart
-jinja2
-openpyxl
-pydantic
 grequests

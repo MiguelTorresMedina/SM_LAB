@@ -31,11 +31,6 @@ async def startup_event():
 
 @app.get("/dataset_final/filter")
 async def filter_dataset(column: str, value: str):
-    # Lista de columnas permitidas para evitar inyecciones SQL
-    #allowed_columns = ['columna1', 'columna2', 'columna3']
-
-    #if column not in allowed_columns:
-    #    raise HTTPException(status_code=400, detail="Filtro no permitido")
 
     data = serve.get_filtered_data(column, value)
     return data.to_dict(orient='records')

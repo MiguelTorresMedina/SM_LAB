@@ -6,26 +6,15 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-import os
-import sys
-sys.path.insert(0, os.path.abspath('../../app/src'))
-
-project = 'SM_Lab'
+project = 'Laboratorio_SistemasMultiagente'
 copyright = '2023, Miguel Torres Medina y Daniel Lopez Martinez'
 author = 'Miguel Torres Medina y Daniel Lopez Martinez'
-release = '0.9.0'
+release = '0.9'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = [
-    'sphinx.ext.autodoc',
-    'sphinx.ext.viewcode',
-    'sphinx.ext.napoleon',
-]
-
-extensions.append('sphinx_autodoc_typehints')
-
+extensions = []
 
 templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
@@ -37,5 +26,3 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
 html_theme = 'alabaster'
 html_static_path = ['_static']
-
-

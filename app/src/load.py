@@ -13,8 +13,8 @@ from time import perf_counter
 from multipledispatch import dispatch
 
 # Variables
-DATA_PATH = os.getcwd()+"/data/SILVER_DATA"
-DATA_PATH2 = os.getcwd()+"/data/GOLD_DATA"
+DATA_PATH = "app/data/SILVER_DATA/"
+DATA_PATH2 = os.getcwd()+"/data/GOLD_DATA/"
 PRODUCTS_DICT = DATA_PATH + 'product_rename_clean.csv'
 FINAL_TABLE_NAME = "dataset_final"
 
@@ -153,20 +153,7 @@ def get_ds(table):
             elif table == "dataset_5_clean":
                 df = df_5_cleaning(raw_ds)
 
-        elif(re.match(regex_raw, table)):
-            simple_table_name = table.replace('_raw', '')
-            url = "http://172.18.0.10:85/extraction/todb/"+simple_table_name
-            print(url)
-            response = requests.get(url, timeout=180)
-
-            print(response)
-
-            if(response.status_code == 200):
-                df = pd.DataFrame(import_from_db(table))
-
     return df
-
-
 
 # Import data from postgresql database to a pandas dataset
 def import_from_db(table):

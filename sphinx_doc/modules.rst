@@ -1,6 +1,7 @@
-SM_LAB
-======
+src
+===
 
 .. toctree::
    :maxdepth: 4
 
+   src
